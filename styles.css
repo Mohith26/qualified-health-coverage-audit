@@ -123,7 +123,7 @@ h1{font-size:28px;line-height:1.25;font-weight:700;letter-spacing:-.01em;margin:
 .rec-main .h{font-size:22px;font-weight:700;color:var(--regal);margin:4px 0 6px}
 .rec-main p{margin:0 0 12px;color:#334155;font-size:14px}
 .rec-main .row{display:flex;gap:10px}
-.test{display:grid;grid-template-columns:22px 84px 1fr 190px;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--zinc-100);font-size:13px}
+.test{display:grid;grid-template-columns:22px 84px 1fr 220px;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--zinc-100);font-size:13px}
 .test:last-child{border-bottom:0}
 .test .ok{color:var(--green-700)}
 .test .no{color:var(--red-700)}
