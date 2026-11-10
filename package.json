@@ -1,0 +1,6 @@
+{
+  "name": "qualified-health-coverage-audit",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node scripts/run.mjs", "test": "node --test tests/core.test.mjs" }
+}

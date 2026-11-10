@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coverage audit · Hepatitis C: Untreated Infection Finder · Qualified Health (concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sb">
+    <div class="SidebarLogoHeader">
+      <img src="assets/qh-logo.svg" alt="Qualified Health" class="logo">
+      <button class="icon-btn" aria-label="Collapse sidebar"><i data-lucide="panel-left"></i></button>
+    </div>
+    <nav class="sb-links">
+      <a class="sb-link active" href="#"><i data-lucide="layout-grid"></i>Applications</a>
+      <a class="sb-link" href="#"><i data-lucide="square-pen"></i>New Chat</a>
+    </nav>
+    <div class="sb-tabs"><span class="active">Recent</span><span>Saved</span><span>Library</span></div>
+    <div class="sb-section">
+      <div class="sb-sec-h">Today <i data-lucide="chevron-up"></i></div>
+      <a class="sb-conv" href="#">HCV outreach letter, 8th grade level</a>
+      <a class="sb-conv" href="#">Summarize ID clinic referral protocol</a>
+      <div class="sb-sec-h">Previous 7 days <i data-lucide="chevron-up"></i></div>
+      <a class="sb-conv" href="#">Prior auth appeal for DAA therapy</a>
+      <a class="sb-conv" href="#">Q3 population health workflow review</a>
+      <a class="sb-conv" href="#">Chart abstraction checklist, hep C</a>
+    </div>
+    <div class="sb-bottom">
+      <button class="SidebarResourcesAndTrainingButton"><i data-lucide="monitor-play"></i>Resources and Training</button>
+      <div class="sb-user"><span class="av">P</span><div><div class="un">Priya</div><div class="ud">Population Health <i data-lucide="chevron-down"></i></div></div><i data-lucide="settings" class="gear"></i></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="crumbs"><a href="#">Applications</a><i data-lucide="chevron-right"></i><a href="#">Workflows</a><i data-lucide="chevron-right"></i><span>Hepatitis C: Untreated Infection Finder</span></div>
+      <div class="top-actions"><button class="btn-ghost"><i data-lucide="history"></i>Run history</button><button class="btn-ghost"><i data-lucide="share-2"></i>Share</button></div>
+    </div>
+    <div class="content">
+      <header class="wf-head">
+        <div class="wf-icon"><i data-lucide="stethoscope"></i></div>
+        <div>
+          <h1>Hepatitis C: <span class="ContainerForTextGradient">Untreated Infection Finder</span></h1>
+          <p class="wf-desc">Reviews charts of patients with any HCV history and routes those who look eligible for curative treatment to the care team, with supporting evidence.</p>
+          <div class="wf-meta"><span class="badge ok"><i data-lucide="circle-check"></i>Live</span><span class="meta-i"><i data-lucide="building-2"></i><span id="m-sites"></span></span><span class="meta-i"><i data-lucide="users"></i><span id="m-pop"></span></span><span class="meta-i"><i data-lucide="sliders-horizontal"></i>Routing threshold <b id="m-thr"></b></span></div>
+        </div>
+      </header>
+
+      <div class="tabs">
+        <span>Overview</span><span>Patient queue</span><span>Evidence</span><span class="active">Coverage audit <em class="new">New</em></span><span>Settings</span>
+      </div>
+
+      <section class="hero-card">
+        <div class="hero-l">
+          <div class="eyebrow"><i data-lucide="search-check"></i>Estimated eligible patients below the routing threshold</div>
+          <div class="big"><span class="ContainerForTextGradient" id="h-missed"></span><span class="big-ci" id="h-ci"></span></div>
+          <p class="hero-p" id="h-lead"></p>
+          <div class="hero-actions"><button class="ButtonWithBlueGradient" id="go-rec"><i data-lucide="wand-sparkles"></i>Review threshold recommendation</button><button class="btn-outline" id="go-queue"><i data-lucide="list-checks"></i>Open audit queue</button></div>
+        </div>
+        <div class="hero-r"><svg id="donut" viewBox="0 0 220 220" width="210" height="210"></svg><div class="donut-legend" id="donut-legend"></div></div>
+      </section>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="grid2">
+        <section class="card">
+          <div class="card-h"><div><h2>Where the missed patients are</h2><p class="muted">Unrouted patients by score, with the estimated eligible share from the calibrated audit. Dots under the axis are audited charts (filled = eligible).</p></div>
+            <div class="seg" id="site-seg"></div></div>
+          <div id="dist"></div>
+        </section>
+        <section class="card">
+          <div class="card-h"><div><h2>Recall by site</h2><p class="muted">Share of each site's eligible patients the workflow routes today, with 90% intervals.</p></div></div>
+          <div id="sites"></div>
+          <div class="callout" id="site-note"></div>
+        </section>
+      </div>
+
+      <section class="card rec" id="rec-card">
+        <div class="card-h"><div><h2><i data-lucide="sparkles" class="h-ic"></i>Threshold recommendation</h2><p class="muted" id="rec-sub"></p></div>
+          <div class="policy">
+            <label>Minimum yield per added band <b id="v-tau"></b><input type="range" id="in-tau" min="0.1" max="0.6" step="0.05"></label>
+            <label>Extra reviews per quarter <b id="v-cap"></b><input type="range" id="in-cap" min="200" max="3000" step="100"></label>
+          </div></div>
+        <div class="rec-body">
+          <div class="rec-main" id="rec-main"></div>
+          <div class="rec-tests" id="rec-tests"></div>
+        </div>
+      </section>
+
+      <div class="grid2">
+        <section class="card">
+          <div class="card-h"><div><h2>Audit strata</h2><p class="muted">Unrouted patients by site and score band, charts audited (eligible found), and the estimate for the rest.</p></div></div>
+          <div class="tbl-wrap"><table class="tbl" id="strata"></table></div>
+        </section>
+        <section class="card" id="queue-card">
+          <div class="card-h"><div><h2>Audit queue</h2><p class="muted" id="q-sub"></p></div><button class="btn-outline sm"><i data-lucide="user-plus"></i>Assign to reviewers</button></div>
+          <div class="tbl-wrap"><table class="tbl" id="queue"></table></div>
+        </section>
+      </div>
+
+      <section class="card">
+        <div class="card-h"><div><h2>How this is computed, and how well it holds up</h2></div></div>
+        <div class="method">
+          <ol id="steps"></ol>
+          <div class="val" id="val"></div>
+        </div>
+      </section>
+      <footer class="foot">Unofficial concept demo by Mohith Gajjela. Not affiliated with Qualified Health. Synthetic data, no real patients. <a href="https://github.com/Mohith26/qualified-health-coverage-audit">Source and tests</a></footer>
+    </div>
+    <button class="chat-fab" aria-label="Chat"><i data-lucide="message-square-text"></i></button>
+  </main>
+</div>
+<div class="tip" id="tip"></div>
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<script src="data/bundle.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
